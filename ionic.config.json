@@ -1,0 +1,7 @@
+{
+  "name": "Ia-playing-flappy-bird",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
