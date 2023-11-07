@@ -20,11 +20,11 @@ cd AI-playing-flappy-bird
 npm install
 #To run
 npm start
-
-[![Assista ao vídeo](https://www.exemplo.com/imagem-thumbnail.png)](https://www.exemplo.com/seu-video.mp4)
-
 ```
 
+
+
+[![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)]
 Note: This may not work on smartphones and/or tablets; it has been optimized for browsers only.
 
 ---
@@ -48,7 +48,7 @@ npm install
 npm start
 ```
 
-[![Assista ao vídeo](https://www.exemplo.com/imagem-thumbnail.png)](https://www.exemplo.com/seu-video.mp4)
+[![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)]
 
 Remarque : Cela peut ne pas fonctionner sur les smartphones et/ou les tablettes ; cela a été optimisé uniquement pour les navigateurs.
 
@@ -74,8 +74,7 @@ npm install
 npm start
 ```
 
-[![Assista ao vídeo](https://www.exemplo.com/imagem-thumbnail.png)](https://www.exemplo.com/seu-video.mp4)
-
+[![.](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)]
 Nota: Isso pode não funcionar em smartphones e/ou tablets; foi otimizado apenas para navegadores.
 
 ---
