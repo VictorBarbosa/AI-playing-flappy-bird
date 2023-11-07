@@ -1,5 +1,5 @@
 {
-  "name": "Ia-playing-flappy-bird",
+  "name": "AI-playing-flappy-bird",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -9,7 +9,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "git-publish": "ng build -c --output-path docs --base-href /AI-playing-flappy-bird/ && git add . && git commit -m publish && git push",
+    "iphone": "ionic  capacitor run ios --external --livereload   --watch     --open"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +29,10 @@
     "@capacitor/keyboard": "5.0.6",
     "@capacitor/status-bar": "5.0.6",
     "@ionic/angular": "^7.0.0",
+    "@tensorflow/tfjs": "^4.10.0",
+    "@types/p5": "^1.7.0",
     "ionicons": "^7.0.0",
+    "p5": "^1.8.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
