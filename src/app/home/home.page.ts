@@ -36,6 +36,16 @@ export class HomePage implements OnInit {
     return this.ga.population[0].generation
   }
 
+
+
+  private _scorePipes: number = 0;
+  public get scorePipes(): number {
+    return this._scorePipes;
+  }
+  public set scorePipes(v: number) {
+    this._scorePipes = v;
+  }
+
   constructor() { }
 
 
@@ -77,7 +87,9 @@ export class HomePage implements OnInit {
     this.background.drawBackground();
     this.obstacles.forEach(obs => {
       obs.draw();
-      obs.isOffscreen(this.obstacles)
+      if (obs.isOffscreen(this.obstacles)) {
+        this.scorePipes += 1
+      }
     });
 
     const population = this.ga.population.filter(pop => pop.isAlive);
@@ -91,13 +103,15 @@ export class HomePage implements OnInit {
       });
     } else {
       this.ga.generateNextGeneration(0.2, this.ga.population);
-      this.initObstacles(p, this.upPipe, this.downPipe)
+      this.initObstacles(p, this.upPipe, this.downPipe);
+      this.scorePipes = 0
     }
 
 
     p.textSize(20)
-    p.text(`Still Alive : ${this.totalPopulation}`, 100, 30)
-    p.text(`Generation: ${this.currentGeneration}`, 100, 50)
+    p.text(`Still Alive : ${this.totalPopulation}`, 10, 50)
+    p.text(`Generation: ${this.currentGeneration}`, 10, 80)
+    p.text(`Score (Pipe count): ${this.scorePipes}`, 10, 110)
     this.background.drawGround();
   }
 }

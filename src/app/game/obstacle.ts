@@ -47,7 +47,8 @@ export default class Obstacle {
     this.x = this.x - this.velocity;
   }
 
-  isOffscreen(obstacles: Obstacle[]) {
+  isOffscreen(obstacles: Obstacle[]): boolean {
+    let offScreen = false;
     if (this.x + this.downPipe.width < -10) {
       const sort = obstacles.sort((a, b) => {
         if (a.x < b.x) { return 1; }
@@ -57,7 +58,9 @@ export default class Obstacle {
 
       const lastX = sort[0].x + 300;
       this.x = lastX;
+      offScreen = true
     }
+    return offScreen
   }
 
   /**
