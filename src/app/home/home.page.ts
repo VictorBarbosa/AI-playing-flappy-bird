@@ -129,7 +129,7 @@ export class HomePage implements OnInit {
    */
   initObstacles(p: p5, upPipe: p5.Image, downPipe: p5.Image) {
     this.obstacles = [];
-    const space = 300
+    const space = 400
     for (let index = 0; index < 10; index++) {
       this.obstacles.push(new Obstacle(p, upPipe, downPipe, this.width, this.height, this.width + (space * index)));
     }

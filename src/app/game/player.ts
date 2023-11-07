@@ -59,7 +59,7 @@ export default class Player {
   constructor(private p: p5, private bird: p5.Image, private ground: p5.Image, private height: number) {
     this.isAlive = true;
     this.y = (window.innerHeight / 2) - 170
-    this.brain = new NeuralNetwork(32, 2, 2)
+    this.brain = new NeuralNetwork(16, 2, 2)
     // this.y = (window.innerHeight / 2) - 230
   }
 

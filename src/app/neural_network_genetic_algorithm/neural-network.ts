@@ -13,6 +13,7 @@ export default class NeuralNetwork {
   private createModel() {
     const model = tf.sequential();
     model.add(tf.layers.dense({ units: this.hidden, inputShape: [this.inputShape], activation: 'relu' }));
+    model.add(tf.layers.dense({ units: this.hidden,  activation: 'relu' }));
     model.add(tf.layers.dense({ units: this.outputShape, activation: 'softmax' }));
     this.model = model
   }

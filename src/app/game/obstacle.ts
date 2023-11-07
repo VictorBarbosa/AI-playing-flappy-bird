@@ -7,7 +7,7 @@ export default class Obstacle {
   yBottom = 0;
   readonly distancePipe = 420;
   x = 0;
-  velocity = 3;
+  velocity = 5;
   targetX = 0
   targetY = 0
   image!: p5.Image
@@ -56,7 +56,7 @@ export default class Obstacle {
         return 0;
       });
 
-      const lastX = sort[0].x + 300;
+      const lastX = sort[0].x + 400;
       this.x = lastX;
       this.yBottom = this.p.random(this.minBottom, this.maxBottom)
       offScreen = true
