@@ -17,27 +17,68 @@ export class HomePage implements OnInit {
    */
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>
 
-
+  /**
+   * Intance of Background
+   */
   background!: Background;
+
+  /**
+   * List of with instance of Obstacles
+   */
   obstacles: Obstacle[] = [];
+
+  /**
+ * List of with instance of Players
+ */
   population: Player[] = [];
+
+  /**
+   * Variable with population size
+   */
   populationSize: number = 100;
+
+  /**
+   * Canvas width size
+   */
   width = window.innerWidth - 40
+
+  /**
+   * Canvas height size
+   */
   height = window.innerHeight - 110
+
+  /**
+   * Instance of Algorithm genetic
+   */
   ga!: GeneticAlgorithm;
+
+  /**
+    * Instance of upPipe
+    */
   upPipe!: p5.Image;
+
+  /**
+    * Instance of downPipe
+    */
   downPipe!: p5.Image;
 
+  /**
+   * Property to get the population still alive
+   */
   get totalPopulation(): number {
     return this.ga.population.filter(pop => pop.isAlive).length
   }
 
+  /**
+   * Property with current generation
+   */
   get currentGeneration(): number {
     return this.ga.population[0].generation
   }
 
-
-
+  /**
+   * Property to count how many pipes have passed.
+   */
   private _scorePipes: number = 0;
   public get scorePipes(): number {
     return this._scorePipes;
@@ -46,19 +87,26 @@ export class HomePage implements OnInit {
     this._scorePipes = v;
   }
 
-  constructor() { }
-
-
-
+  /**
+   * Ng Init create instance to P5
+   */
   ngOnInit(): void {
     new p5(this.sketch.bind(this));
   }
 
+  /**
+   * sketch
+   * @param p5 instance
+   */
   sketch(p: p5) {
     p.setup = () => this.setup(p);
     p.draw = () => this.draw(p);
   }
 
+  /**
+   * setup
+   * @param p5 instance
+   */
   setup(p: p5) {
     const bg = p.loadImage('assets/bg.png');
     const ground = p.loadImage('assets/ground.png');
@@ -70,10 +118,15 @@ export class HomePage implements OnInit {
 
     this.initObstacles(p, this.upPipe, this.downPipe)
     this.ga = new GeneticAlgorithm(this.populationSize, p, bird, ground, this.height)
-    // p.createCanvas(this.width, this.height, this.canvas.nativeElement)
     p.createCanvas(this.width, this.height, this.canvas.nativeElement)
   }
 
+  /**
+   * Create and recreate the pipes(obstacles)
+   * @param p5 instance
+   * @param upPipe instance
+   * @param downPipe instance
+   */
   initObstacles(p: p5, upPipe: p5.Image, downPipe: p5.Image) {
     this.obstacles = [];
     const space = 300
@@ -82,6 +135,10 @@ export class HomePage implements OnInit {
     }
   }
 
+  /**
+   * Draw the scene
+   * @param p5 instance
+   */
   draw(p: p5) {
     p.background(111, 197, 206);
     this.background.drawBackground();

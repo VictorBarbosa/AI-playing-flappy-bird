@@ -3,6 +3,7 @@ import Player from "../game/player";
 
 
 export default class GeneticAlgorithm {
+
   /**
    * Population of player(Individual)
    */
@@ -13,8 +14,6 @@ export default class GeneticAlgorithm {
       this.population.push(new Player(p, bird, ground, height))
     }
   }
-
-
 
   /**
    * Select best play of the generation
@@ -50,7 +49,6 @@ export default class GeneticAlgorithm {
     return children[0];
   }
 
-
   /**
    *
    * @param population
@@ -68,7 +66,6 @@ export default class GeneticAlgorithm {
     }
     return bestIndividual as Player;
   }
-
 
   /**
    *
@@ -90,7 +87,6 @@ export default class GeneticAlgorithm {
     // Retornar um indivíduo por padrão (caso ocorra algum erro)
     return population[0];
   }
-
 
   /**
    *
@@ -147,7 +143,6 @@ export default class GeneticAlgorithm {
 
     }
 
-
     const last = newGeneration.length - 1;
     bestParent.isAlive = true;
     bestParent.score = 0;
@@ -157,7 +152,4 @@ export default class GeneticAlgorithm {
     return this.population
 
   }
-
-
-
 }

@@ -2,12 +2,15 @@ import * as p5 from "p5";
 
 export default class Background {
 
-  constructor(private p: p5,
-    private background: p5.Image, private ground: p5.Image, private w: number, private y: number ) {
-
-     }
-
-
+  /**
+   *
+   * @param p Instance
+   * @param background  Instance
+   * @param ground  Instance
+   * @param w  Instance
+   * @param y  Instance
+   */
+  constructor(private p: p5, private background: p5.Image, private ground: p5.Image, private w: number, private y: number) { }
 
   /**
    * Draw background

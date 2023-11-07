@@ -4,15 +4,58 @@ import * as tf from '@tensorflow/tfjs'
 import NeuralNetwork from "../neural_network_genetic_algorithm/neural-network";
 export default class Player {
 
+  /**
+   * Property to indicante if the bird is still alive
+   */
   isAlive: boolean = true;
+
+  /**
+   * Property to indicante where the bird is on the screen
+   */
   x: number = 70
+
+  /**
+   * Property to indicante where the bird is on the screen
+   */
   y: number = 0
+
+  /**
+   * gravity
+   */
   gravity = 0.8;
+
+  /**
+  * upLift
+  */
   upLift = -12;
+
+  /**
+   * velocity
+   */
   velocity = 0;
+
+  /**
+  * score
+  */
   score = 0
+
+  /**
+  * Instance of Neural Network
+  */
   brain!: NeuralNetwork;
+
+  /**
+  * generation
+  */
   generation: number = 0
+
+  /**
+   *
+   * @param p
+   * @param bird
+   * @param ground
+   * @param height
+   */
   constructor(private p: p5, private bird: p5.Image, private ground: p5.Image, private height: number) {
     this.isAlive = true;
     this.y = (window.innerHeight / 2) - 170
@@ -21,8 +64,11 @@ export default class Player {
   }
 
 
+  /**
+   * Update the bird on screen
+   * @param obstacles list with all obstacles
+   */
   update(obstacles: Obstacle[]) {
-
 
     const sort = this.getNearObstacle(obstacles);
     let targetY = 0
@@ -39,22 +85,30 @@ export default class Player {
       targetY = this.y - sort?.targetY;
     }
 
-
-
     this.fall(targetX, targetY);
 
     this.p.image(this.bird, this.x, this.y)
 
   }
 
-  fall(targetX: number, targetY: number) {
+  /**
+   * function to go dowm the bird
+   * @param targetX position
+   * @param targetY position
+   */
+  private fall(targetX: number, targetY: number) {
     this.velocity += this.gravity;
     this.velocity *= 0.9;
     this.y += this.velocity;
     this.score = this.score - targetX - targetY;
   }
 
-  getNearObstacle(obstacles: Obstacle[]) {
+  /**
+   *
+   * @param obstacles
+   * @returns
+   */
+  private getNearObstacle(obstacles: Obstacle[]) {
     const sort = obstacles.filter(obs => obs.x >= this.x + this.bird.width).sort((a, b) => {
       if (a.x < b.x) { return -1; }
       if (a.x > b.x) { return 1; }
@@ -63,6 +117,11 @@ export default class Player {
     return sort[0];
   }
 
+  /**
+   * Test if have a collision
+   * @param obstacles
+   * @returns
+   */
   hits(obstacles: Obstacle[]) {
     const hasHit = false;
     const firstNear = obstacles.filter(obs => obs.x < this.x + this.bird.width).sort((a, b) => {
@@ -70,7 +129,6 @@ export default class Player {
       if (a.x > b.x) { return 1; }
       return 0;
     })[0];
-
 
     if (
       (this.x + this.bird?.width > firstNear?.x &&
@@ -89,12 +147,18 @@ export default class Player {
     return hasHit;
   }
 
+  /**
+   * Check if the bird is still on the scene
+   */
   isOffScreen() {
     if (this.y + this.bird.height < 0 || this.y > this.height - this.ground.height) {
       this.isAlive = false;
     }
   }
 
+  /**
+   * Jump the Bird
+   */
   jump() {
     this.velocity += this.upLift;
     this.velocity *= 0.9;
@@ -232,9 +296,13 @@ export default class Player {
     }
   }
 
+  /**
+   * "This function is responsible for calling the neural network and taking action based on the neural network's response."
+   * @param obstacles
+   */
   think(obstacles: Obstacle[]) {
     const input = [];
-    const sort = obstacles.filter(obs => obs.targetX >= this.x ).sort((a, b) => {
+    const sort = obstacles.filter(obs => obs.targetX >= this.x).sort((a, b) => {
       if (a.x < b.x) { return -1; }
       if (a.x > b.x) { return 1; }
       return 0;

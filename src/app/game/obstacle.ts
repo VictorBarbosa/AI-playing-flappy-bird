@@ -58,6 +58,7 @@ export default class Obstacle {
 
       const lastX = sort[0].x + 300;
       this.x = lastX;
+      this.yBottom = this.p.random(this.minBottom, this.maxBottom)
       offScreen = true
     }
     return offScreen
