@@ -24,7 +24,8 @@ npm start
 
 
 
-[![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)]
+ ![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)
+
 Note: This may not work on smartphones and/or tablets; it has been optimized for browsers only.
 
 ---
@@ -48,8 +49,8 @@ npm install
 npm start
 ```
 
-[![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)]
-
+ ![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)
+ 
 Remarque : Cela peut ne pas fonctionner sur les smartphones et/ou les tablettes ; cela a été optimisé uniquement pour les navigateurs.
 
 
@@ -74,7 +75,7 @@ npm install
 npm start
 ```
 
-[![.](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)]
+ ![](https://github.com/VictorBarbosa/AI-playing-flappy-bird/blob/main/src/assets/flappy-bird.png)
 Nota: Isso pode não funcionar em smartphones e/ou tablets; foi otimizado apenas para navegadores.
 
 ---
